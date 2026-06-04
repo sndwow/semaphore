@@ -60,7 +60,10 @@
       :disabled="formSaving"
       outlined
       dense
-      required
+      :required="true"
+      :rules="[
+        val => !item.message || item.message + ' ' + $t('isRequired')
+      ]"
     />
 
     <div v-for="(v) in template.survey_vars || []" :key="v.name">
