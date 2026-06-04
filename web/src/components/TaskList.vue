@@ -54,14 +54,6 @@
       <template v-slot:item.end="{ item }">
         {{ [item.start, item.end] | formatMilliseconds }}
       </template>
-
-      <template v-slot:item.actions="{ item }">
-        <v-btn-toggle dense :value-comparator="() => false">
-          <v-btn @click="createTask(item)">
-            <v-icon>mdi-replay</v-icon>
-          </v-btn>
-        </v-btn-toggle>
-      </template>
     </v-data-table>
   </div>
 </template>
