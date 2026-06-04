@@ -41,11 +41,9 @@
         </div>
 
         <div style="font-size: 14px;" class="ml-7">
-            <span v-if="item.message">
-              <v-icon x-small>mdi-message-outline</v-icon> {{ item.message }}
-            </span>
-          <span v-else-if="item.commit_hash">
-              <v-icon x-small>mdi-source-fork</v-icon> {{ item.commit_message }}
+            <span v-if="item.message"
+              style="margin-left: 0 !important; white-space: normal; word-break: break-word;">
+              {{ item.message }}
             </span>
         </div>
       </template>
