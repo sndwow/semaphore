@@ -318,19 +318,6 @@
 
             <v-spacer />
 
-            <v-btn
-              icon
-              style="margin-left: -15px"
-              class="mr-1"
-              :color="navEditMode ? 'primary' : undefined"
-              :title="navEditMode ? $t('finishEditingMenu') : $t('editMenu')"
-              @click="navEditMode = !navEditMode"
-            >
-              <v-icon style="transform: scale(1.3)">
-                {{ navEditMode ? 'mdi-check' : 'mdi-playlist-edit' }}
-              </v-icon>
-            </v-btn>
-
             <v-spacer />
 
             <v-menu top min-width="150" max-width="235" nudge-top="12" :position-x="50" absolute>
