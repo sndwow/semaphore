@@ -146,16 +146,6 @@
               v-on="on"
               data-testid="sidebar-currentProject"
             >
-              <v-list-item-icon>
-                <v-avatar
-                  :color="getProjectColor(project)"
-                  size="24"
-                  style="font-size: 13px; font-weight: bold"
-                >
-                  <span class="white--text">{{ getProjectInitials(project) }}</span>
-                </v-avatar>
-              </v-list-item-icon>
-
               <v-list-item-content>
                 <v-list-item-title class="app__project-selector-title">
                   {{ project.name }}
@@ -566,7 +556,7 @@
         :userPermissions="(userRole || {}).permissions"
         :userRole="(userRole || {}).role"
         :userId="(user || {}).id"
-        :isAdmin="(user || {}).admin"
+        :isAdmin="isAdmin"
         :user="user"
         :features="(systemInfo || { features: {} }).features"
         :authMethods="(systemInfo || { auth_methods: {} }).auth_methods"
@@ -1080,6 +1070,9 @@ export default {
   },
 
   computed: {
+    isAdmin() {
+      return (this.user || {}).admin;
+    },
     isPro() {
       return (process.env.VUE_APP_BUILD_TYPE || '').startsWith('pro_');
     },
@@ -1137,61 +1130,65 @@ export default {
             to: `${base}/schedule`,
             testId: 'sidebar-schedule',
           },
-          {
-            key: 'inventory',
-            icon: 'mdi-monitor-multiple',
-            title: this.$t('inventory'),
-            to: `${base}/inventory`,
-            testId: 'sidebar-inventory',
-          },
-          {
-            key: 'environment',
-            icon: 'mdi-code-braces',
-            title: this.$t('environment'),
-            to: `${base}/environment`,
-            testId: 'sidebar-environment',
-          },
-          {
-            key: 'keys',
-            icon: 'mdi-key-change',
-            title: this.$t('keyStore'),
-            to: `${base}/keys`,
-            testId: 'sidebar-keys',
-          },
-          {
-            key: 'repositories',
-            icon: 'mdi-git',
-            title: this.$t('repositories'),
-            to: `${base}/repositories`,
-          },
-          {
-            key: 'integrations',
-            icon: 'mdi-connection',
-            title: this.$t('integrations'),
-            to: `${base}/integrations`,
-            testId: 'sidebar-integrations',
-          },
         );
+        if (this.isAdmin) {
+          items.push(
+            {
+              key: 'inventory',
+              icon: 'mdi-monitor-multiple',
+              title: this.$t('inventory'),
+              to: `${base}/inventory`,
+              testId: 'sidebar-inventory',
+            },
+            {
+              key: 'environment',
+              icon: 'mdi-code-braces',
+              title: this.$t('environment'),
+              to: `${base}/environment`,
+              testId: 'sidebar-environment',
+            },
+            {
+              key: 'keys',
+              icon: 'mdi-key-change',
+              title: this.$t('keyStore'),
+              to: `${base}/keys`,
+              testId: 'sidebar-keys',
+            },
+            {
+              key: 'repositories',
+              icon: 'mdi-git',
+              title: this.$t('repositories'),
+              to: `${base}/repositories`,
+            },
+            {
+              key: 'integrations',
+              icon: 'mdi-connection',
+              title: this.$t('integrations'),
+              to: `${base}/integrations`,
+              testId: 'sidebar-integrations',
+            },
+          );
+        }
       }
 
-      items.push({
-        key: 'team',
-        icon: 'mdi-account-multiple',
-        title: this.$t('team'),
-        to: `${base}/team`,
-        testId: 'sidebar-team',
-      });
-
-      if (this.isPro && this.project.type === '') {
+      if (this.isAdmin) {
         items.push({
-          key: 'runners',
-          icon: 'mdi-cogs',
-          title: this.$t('runners'),
-          to: `${base}/runners`,
-          testId: 'sidebar-runners',
+          key: 'team',
+          icon: 'mdi-account-multiple',
+          title: this.$t('team'),
+          to: `${base}/team`,
+          testId: 'sidebar-team',
         });
+        if (this.isPro && this.project.type === '') {
+          items.push({
+            key: 'runners',
+            icon: 'mdi-cogs',
+            title: this.$t('runners'),
+            to: `${base}/runners`,
+            testId: 'sidebar-runners',
+          });
+        }
       }
-
       return items;
     },
 

@@ -164,27 +164,6 @@
         </router-link>
       </template>
 
-      <template v-slot:item.version="{ item }">
-        <TaskLink
-          v-if="item.last_task && item.last_task.tpl_type !== ''"
-          :disabled="true"
-          :status="item.last_task.status"
-
-          :task-id="item.last_task.tpl_type === 'build'
-              ? item.last_task.id
-              : (item.last_task.build_task || {}).id"
-
-          :label="item.last_task.tpl_type === 'build'
-              ? item.last_task.version
-              : (item.last_task.build_task || {}).version"
-
-          :tooltip="item.last_task.tpl_type === 'build'
-              ? item.last_task.message
-              : (item.last_task.build_task || {}).message"
-        />
-        <div v-else>&mdash;</div>
-      </template>
-
       <template v-slot:item.status="{ item }">
         <div class="mt-2 mb-2 d-flex" v-if="item.last_task != null">
           <TaskStatus :status="item.last_task.status"/>
@@ -501,11 +480,6 @@ export default {
           value: 'actions',
           sortable: false,
           width: '0%',
-        },
-        {
-          text: this.$i18n.t('version'),
-          value: 'version',
-          sortable: false,
         },
         {
           text: this.$i18n.t('status'),
