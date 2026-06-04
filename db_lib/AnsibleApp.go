@@ -102,7 +102,6 @@ func (t *AnsibleApp) installGalaxyRequirementsFile(requirementsType GalaxyRequir
 	requirementsHashFilePath := t.requirementsHashFilePath(requirementsType, requirementsFilePath)
 
 	if _, err := os.Stat(requirementsFilePath); err != nil {
-		t.Log("No " + requirementsFilePath + " file found. Skip galaxy install process.\n")
 		return nil
 	}
 
@@ -123,7 +122,6 @@ func (t *AnsibleApp) installGalaxyRequirementsFile(requirementsType GalaxyRequir
 			return err
 		}
 	} else {
-		t.Log(requirementsFilePath + " has no changes. Skip galaxy install process.\n")
 	}
 
 	return nil
