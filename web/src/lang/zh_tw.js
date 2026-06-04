@@ -148,6 +148,7 @@ export default {
   columns: '欄位',
   buildVersion: '建置版本',
   messageOptional: '訊息（選填）',
+  messageRequired: '訊息',
   debug: '除錯',
   dryRun: '模擬執行',
   diff: '差異',

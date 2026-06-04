@@ -146,6 +146,7 @@ export default {
   columns: 'Kolommen',
   buildVersion: 'Bouw Versie',
   messageOptional: 'Bericht (Optioneel)',
+  messageRequired: 'Bericht',
   debug: 'Debug',
   dryRun: 'Droge Run',
   diff: 'Verschil',

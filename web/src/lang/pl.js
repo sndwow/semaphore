@@ -146,6 +146,7 @@ export default {
   columns: 'Kolumny',
   buildVersion: 'Wersja kompilacji',
   messageOptional: 'Wiadomość (opcjonalnie)',
+  messageRequired: 'Wiadomość',
   debug: 'Debug',
   dryRun: 'Symulacja',
   diff: 'Różnice',

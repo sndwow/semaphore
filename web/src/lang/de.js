@@ -152,6 +152,7 @@ export default {
   columns: 'Spalten',
   buildVersion: 'Build-Version',
   messageOptional: 'Nachricht (optional)',
+  messageRequired: 'Nachricht',
   debug: 'Debug',
   dryRun: 'Testlauf',
   diff: 'Diff',

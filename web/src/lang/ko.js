@@ -146,6 +146,7 @@ export default {
   columns: '열',
   buildVersion: '빌드 버전',
   messageOptional: '메시지 (선택 사항)',
+  messageRequired: '메시지',
   debug: '디버그',
   dryRun: '드라이 런',
   diff: '차이',

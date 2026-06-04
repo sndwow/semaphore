@@ -146,6 +146,7 @@ export default {
   columns: '列',
   buildVersion: '构建版本',
   messageOptional: '消息（可选）',
+  messageRequired: '消息',
   debug: '调试',
   dryRun: '干运行',
   diff: '差异',

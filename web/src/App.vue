@@ -166,15 +166,6 @@
             :to="`/project/${item.id}`"
             @click="selectProject(item.id)"
           >
-            <v-list-item-icon>
-              <v-avatar
-                :color="getProjectColor(item)"
-                size="24"
-                style="font-size: 13px; font-weight: bold"
-              >
-                <span class="white--text">{{ getProjectInitials(item) }}</span>
-              </v-avatar>
-            </v-list-item-icon>
             <v-list-item-content>{{ item.name }}</v-list-item-content>
           </v-list-item>
 

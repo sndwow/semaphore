@@ -151,6 +151,7 @@ export default {
   columns: 'Столбцы',
   buildVersion: 'Версия сборки',
   messageOptional: 'Сообщение (необязательно)',
+  messageRequired: 'Сообщение',
   debug: 'Отладка',
   dryRun: 'Пробный запуск',
   diff: 'Различия',

@@ -146,6 +146,7 @@ export default {
   columns: '列',
   buildVersion: 'ビルドバージョン',
   messageOptional: 'メッセージ（オプション）',
+  messageRequired: 'メッセージ',
   debug: 'デバッグ',
   dryRun: 'ドライラン',
   diff: '差分',

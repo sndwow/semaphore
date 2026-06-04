@@ -148,6 +148,7 @@ export default {
   columns: 'Колонки',
   buildVersion: 'Версія збірки',
   messageOptional: 'Повідомлення (необов’язково)',
+  messageRequired: 'Повідомлення',
   debug: 'Налагодження',
   dryRun: 'Тестовий запуск',
   diff: 'Порівняння',

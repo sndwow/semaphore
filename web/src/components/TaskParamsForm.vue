@@ -2,9 +2,10 @@
   <div>
     <v-text-field
         v-model="item.message"
-        :label="$t('messageOptional')"
+        :label="$t('messageRequired')"
         outlined
         dense
+        required
     />
 
     <div v-for="(v) in template.survey_vars || []" :key="v.name">

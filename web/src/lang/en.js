@@ -163,6 +163,7 @@ export default {
   columns: 'Columns',
   buildVersion: 'Build Version',
   messageOptional: 'Message (Optional)',
+  messageRequired: 'Message',
   debug: 'Debug',
   dryRun: 'Dry Run',
   diff: 'Diff',
