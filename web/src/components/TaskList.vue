@@ -20,9 +20,11 @@
             :task-id="item.id"
             :label="'#' + item.id"
         />
-        <div style="font-size: 14px;">
-          <span v-if="item.message"
-           style="white-space: normal; word-break: break-word;">
+        <div style="font-size: 14px;
+        margin-left: 0 !important;
+        white-space: normal;
+        word-break: break-word;">
+          <span v-if="item.message">
             {{ item.message }}
           </span>
         </div>

@@ -40,9 +40,12 @@
           </router-link>
         </div>
 
-        <div style="font-size: 14px;" class="ml-7">
-            <span v-if="item.message"
-              style="margin-left: 0 !important; white-space: normal; word-break: break-word;">
+        <div style="font-size: 14px;
+            margin-left: 0 !important;
+            white-space: normal;
+            word-break: break-word;"
+          class="ml-7">
+            <span v-if="item.message">
               {{ item.message }}
             </span>
         </div>
