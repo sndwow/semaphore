@@ -156,6 +156,7 @@
         <!--        </v-icon>-->
 
         <router-link
+          :style="tplStyle(item.name)"
           :to="viewId
               ? `/project/${projectId}/views/${viewId}/templates/${item.id}`
               : `/project/${projectId}/templates/${item.id}`"
@@ -376,7 +377,18 @@ export default {
         }
       }
     },
-
+    tplStyle(taskName) {
+      if (taskName.includes('prod')) {
+        return { color: '#f32626' };
+      }
+      if (taskName.includes('pre')) {
+        return { color: '#cf921d' };
+      }
+      if (taskName.includes('test')) {
+        return { color: '#1c8f1c' };
+      }
+      return {};
+    },
     allowActions() {
       return true;
     },

@@ -3,15 +3,14 @@
     v-model="dialog"
     :save-button-text="$t(TEMPLATE_TYPE_ACTION_TITLES[template?.type || ''])"
     :title="$t('newTask')"
+    :max-width="800"
     @save="closeDialog"
     @close="closeDialog"
     test-id="newTaskDialog"
   >
     <template v-slot:title={}>
       <v-icon small class="mr-4">{{ TEMPLATE_TYPE_ICONS[template?.type || ''] }}</v-icon>
-      <span class="breadcrumbs__item">{{ templateTitle }}</span>
-      <v-icon>mdi-chevron-right</v-icon>
-      <span class="breadcrumbs__item">{{ $t('newTask') }}</span>
+      <span class="breadcrumbs__item" :style="templateTitleSylte">{{ templateTitle }}</span>
     </template>
 
     <template v-slot:form="{ onSave, onError, needSave, needReset }">
@@ -65,12 +64,23 @@ export default {
 
   computed: {
     templateTitle() {
-      let res = this.template?.name || '';
-      if (res.length > 16) {
-        res = `${res.substring(0, 14)}...`;
+      // let res = this.template?.name || '';
+      // if (res.length > 16) {
+      // res = `${res.substring(0, 14)}...`;
+      // }
+      return this.template?.name || '';
+    },
+    templateTitleSylte() {
+      if (this.templateTitle.includes('prod')) {
+        return { color: '#f32626' };
       }
-
-      return res;
+      if (this.templateTitle.includes('pre')) {
+        return { color: '#cf921d' };
+      }
+      if (this.templateTitle.includes('test')) {
+        return { color: '#1c8f1c' };
+      }
+      return {};
     },
   },
 

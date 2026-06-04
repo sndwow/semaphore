@@ -39,7 +39,7 @@
 
           <v-icon small class="ml-1 mr-1">mdi-arrow-left</v-icon>
 
-          <router-link :to="
+          <router-link :style="tplStyle(item.tpl_alias)" :to="
             '/project/' + item.project_id +
             '/templates/' + item.template_id"
           >{{ item.tpl_alias }}
@@ -133,6 +133,18 @@ export default {
       EventBus.$emit('i-show-task', {
         taskId,
       });
+    },
+    tplStyle(taskName) {
+      if (taskName.includes('prod')) {
+        return { color: '#f32626' };
+      }
+      if (taskName.includes('pre')) {
+        return { color: '#cf921d' };
+      }
+      if (taskName.includes('test')) {
+        return { color: '#1c8f1c' };
+      }
+      return {};
     },
 
     async onWebsocketDataReceived(data) {
