@@ -62,7 +62,7 @@
       dense
       :required="true"
       :rules="[
-        val => item.message || $t('messageRequired') + ' ' + $t('isRequired')
+        val => !!val?.trim() || $t('messageRequired') + ' ' + $t('isRequired')
       ]"
     />
 
