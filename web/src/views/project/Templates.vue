@@ -475,6 +475,7 @@ export default {
         {
           text: this.$i18n.t('name'),
           value: 'name',
+          sortable: false,
         },
         {
           value: 'actions',

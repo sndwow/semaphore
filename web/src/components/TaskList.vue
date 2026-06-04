@@ -29,20 +29,6 @@
           </span>
         </div>
       </template>
-
-      <template v-slot:item.version="{ item }">
-        <div v-if="item.tpl_type !== ''">
-          <TaskLink
-              :disabled="item.tpl_type === 'build'"
-              :task-id="item.build_task_id"
-              :tooltip="item.tpl_type === 'build' ? item.message : (item.build_task || {}).message"
-              :label="item.tpl_type === 'build' ? item.version : (item.build_task || {}).version"
-              :status="item.status"
-          />
-        </div>
-        <div v-else>&mdash;</div>
-      </template>
-
       <template v-slot:item.status="{ item }">
         <TaskStatus :status="item.status"/>
       </template>
@@ -93,11 +79,6 @@ export default {
           value: 'actions',
           sortable: false,
           width: '0%',
-        },
-        {
-          text: this.$i18n.t('version'),
-          value: 'version',
-          sortable: false,
         },
         {
           text: this.$i18n.t('status'),
