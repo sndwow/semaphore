@@ -150,7 +150,6 @@
                 <v-list-item-title class="app__project-selector-title">
                   {{ project.name }}
                 </v-list-item-title>
-                <v-list-item-subtitle>{{ userRole.role }}</v-list-item-subtitle>
               </v-list-item-content>
 
               <v-list-item-icon>
