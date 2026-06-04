@@ -55,28 +55,6 @@
           hide-details
         ></v-slider>
       </v-col>
-      <v-col>
-        <v-checkbox
-          class="mt-0"
-          :input-value="params.dry_run"
-          @change="updateValue('dry_run', $event)"
-        >
-          <template v-slot:label>
-            <div class="text-no-wrap">{{ $t('dryRun') }} <code>--check</code></div>
-          </template>
-        </v-checkbox>
-      </v-col>
-      <v-col>
-        <v-checkbox
-          class="mt-0"
-          :input-value="params.diff"
-          @change="updateValue('diff', $event)"
-        >
-          <template v-slot:label>
-            <div class="text-no-wrap">{{ $t('diff') }} <code>--diff</code></div>
-          </template>
-        </v-checkbox>
-      </v-col>
     </v-row>
   </div>
 </template>
