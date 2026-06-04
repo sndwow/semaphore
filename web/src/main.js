@@ -98,7 +98,15 @@ Vue.filter('formatMilliseconds', (value) => {
     throw new Error('formatMilliseconds: unsupported value type');
   }
 
-  return dayjs.duration(ms).asSeconds();
+  const totalSeconds = dayjs.duration(ms).asSeconds();
+  // < 60s → 00:xx
+  if (totalSeconds < 60) {
+    const ss = String(totalSeconds).padStart(2, '0');
+    return `00:${ss}`;
+  }
+  // >= 60s → xx.xx 分钟
+  const minutes = totalSeconds / 60;
+  return `${minutes.toFixed(2)}`;
 });
 
 //
