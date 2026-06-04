@@ -98,7 +98,7 @@ Vue.filter('formatMilliseconds', (value) => {
     throw new Error('formatMilliseconds: unsupported value type');
   }
 
-  return dayjs.duration(ms).humanize();
+  return dayjs.duration(ms).asSeconds();
 });
 
 //
