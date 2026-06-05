@@ -481,11 +481,6 @@ export default {
           sortable: false,
         },
         {
-          text: this.$i18n.t('lastTask'),
-          value: 'last_task',
-          sortable: false,
-        },
-        {
           text: this.$i18n.t('status'),
           value: 'status',
           sortable: false,
@@ -494,6 +489,11 @@ export default {
           value: 'actions',
           sortable: false,
           width: '0%',
+        },
+        {
+          text: this.$i18n.t('lastTask'),
+          value: 'last_task',
+          sortable: false,
         },
       ];
     },

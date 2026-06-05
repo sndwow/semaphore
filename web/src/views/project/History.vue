@@ -157,13 +157,13 @@ export default {
           sortable: false,
         },
         {
-          text: this.$i18n.t('user'),
-          value: 'user_name',
+          text: this.$i18n.t('status'),
+          value: 'status',
           sortable: false,
         },
         {
-          text: this.$i18n.t('status'),
-          value: 'status',
+          text: this.$i18n.t('user'),
+          value: 'user_name',
           sortable: false,
         },
       ];
