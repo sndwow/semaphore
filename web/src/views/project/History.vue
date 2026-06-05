@@ -21,11 +21,6 @@
     >
       <template v-slot:item.tpl_alias="{ item }">
         <div class="d-flex align-center">
-
-          <!--          <v-icon class="mr-3" small>-->
-          <!--            {{ TEMPLATE_TYPE_ICONS[item.tpl_type] }}-->
-          <!--          </v-icon>-->
-
           <TaskLink
             :task-id="item.id"
             :label="'#' + item.id"
@@ -147,13 +142,8 @@ export default {
           sortable: false,
         },
         {
-          text: this.$i18n.t('status'),
-          value: 'status',
-          sortable: false,
-        },
-        {
-          text: this.$i18n.t('user'),
-          value: 'user_name',
+          text: this.$i18n.t('playbook'),
+          value: 'tpl_playbook',
           sortable: false,
         },
         {
@@ -164,6 +154,16 @@ export default {
         {
           text: this.$i18n.t('duration'),
           value: 'end',
+          sortable: false,
+        },
+        {
+          text: this.$i18n.t('user'),
+          value: 'user_name',
+          sortable: false,
+        },
+        {
+          text: this.$i18n.t('status'),
+          value: 'status',
           sortable: false,
         },
       ];

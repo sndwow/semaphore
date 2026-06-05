@@ -144,10 +144,6 @@
       }"
     >
       <template v-slot:item.name="{ item }">
-        <!--        <v-icon class="mr-3" small>-->
-        <!--          {{ TEMPLATE_TYPE_ICONS[item.type] }}-->
-        <!--        </v-icon>-->
-
         <router-link
           :style="tplStyle(item.name)"
           :to="viewId
@@ -156,12 +152,14 @@
         >{{ item.name }}
         </router-link>
       </template>
-
-      <template v-slot:item.status="{ item }">
-        <div class="mt-2 mb-2 d-flex" v-if="item.last_task != null">
-          <TaskStatus :status="item.last_task.status"/>
-        </div>
-        <div v-else class="mt-3 mb-2 d-flex" style="color: gray;">{{ $t('notLaunched') }}</div>
+      <template v-slot:item.inventory_id="{ item }">
+        {{ (inventory.find((x) => x.id === item.inventory_id) || {name: '—'}).name }}
+      </template>
+      <template v-slot:item.environment_ids="{ item }">
+         {{ formatEnvironmentNames(item) }}
+      </template>
+      <template v-slot:item.repository_id="{ item }">
+         {{ repositories.find((x) => x.id === item.repository_id).name }}
       </template>
 
       <template v-slot:item.last_task="{ item }">
@@ -177,24 +175,16 @@
         </div>
       </template>
 
-      <template v-slot:item.inventory_id="{ item }">
-        {{ (inventory.find((x) => x.id === item.inventory_id) || {name: '—'}).name }}
-      </template>
-
-      <template v-slot:item.environment_ids="{ item }">
-        {{ formatEnvironmentNames(item) }}
-      </template>
-
-      <template v-slot:item.repository_id="{ item }">
-        {{ repositories.find((x) => x.id === item.repository_id).name }}
+      <template v-slot:item.status="{ item }">
+        <div class="mt-2 mb-2 d-flex" v-if="item.last_task != null">
+          <TaskStatus :status="item.last_task.status"/>
+        </div>
+        <div v-else class="mt-3 mb-2 d-flex" style="color: gray;">{{ $t('notLaunched') }}</div>
       </template>
 
       <template v-slot:item.actions="{ item }">
         <v-btn-toggle dense :value-comparator="() => false">
-          <v-btn
-            v-if="canRun(item)"
-            @click="createTask(item.id)"
-          >
+          <v-btn v-if="canRun(item)" @click="createTask(item.id)">
             <v-icon>mdi-play</v-icon>
           </v-btn>
         </v-btn-toggle>
@@ -471,21 +461,6 @@ export default {
           sortable: false,
         },
         {
-          value: 'actions',
-          sortable: false,
-          width: '0%',
-        },
-        {
-          text: this.$i18n.t('status'),
-          value: 'status',
-          sortable: false,
-        },
-        {
-          text: this.$i18n.t('lastTask'),
-          value: 'last_task',
-          sortable: false,
-        },
-        {
           text: this.$i18n.t('playbook'),
           value: 'playbook',
           sortable: false,
@@ -504,6 +479,21 @@ export default {
           text: this.$i18n.t('repository2'),
           value: 'repository_id',
           sortable: false,
+        },
+        {
+          text: this.$i18n.t('lastTask'),
+          value: 'last_task',
+          sortable: false,
+        },
+        {
+          text: this.$i18n.t('status'),
+          value: 'status',
+          sortable: false,
+        },
+        {
+          value: 'actions',
+          sortable: false,
+          width: '0%',
         },
       ];
     },
