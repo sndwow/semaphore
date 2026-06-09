@@ -18,6 +18,7 @@
         <router-link
           v-else
           class="breadcrumbs__item breadcrumbs__item--link"
+          :style="tplStyle(template ? template.name : null)"
           :to="`/project/${projectId}/templates/${template ? template.id : null}`"
           @click="close()"
         >{{ template ? template.name : null }}</router-link>
@@ -108,7 +109,18 @@ export default {
       this.template = null;
       this.onClose();
     },
-
+    tplStyle(taskName) {
+      if (taskName.includes('prod')) {
+        return { color: '#f32626' };
+      }
+      if (taskName.includes('pre')) {
+        return { color: '#cf921d' };
+      }
+      if (taskName.includes('test')) {
+        return { color: '#1c8f1c' };
+      }
+      return {};
+    },
     async loadData() {
       if (this.itemId == null) {
         return;

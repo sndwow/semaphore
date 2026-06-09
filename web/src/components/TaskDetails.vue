@@ -19,7 +19,8 @@
                 <tr>
                   <td><b>Template</b></td>
                   <td>
-                    <RouterLink :to="`/project/${projectId}/templates/${template.id}`">
+                    <RouterLink :style="tplStyle"
+                      :to="`/project/${projectId}/templates/${template.id}`">
                       {{ template.name }}
                     </RouterLink>
                   </td>
@@ -221,6 +222,18 @@ export default {
   methods: {
     async loadData() {
       this.template = await this.loadProjectResource('templates', this.item.template_id);
+    },
+    tplStyle(taskName) {
+      if (taskName.includes('prod')) {
+        return { color: '#f32626' };
+      }
+      if (taskName.includes('pre')) {
+        return { color: '#cf921d' };
+      }
+      if (taskName.includes('test')) {
+        return { color: '#1c8f1c' };
+      }
+      return {};
     },
   },
 };
